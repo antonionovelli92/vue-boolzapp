@@ -22,10 +22,11 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     
     <!-- js -->
-    <script src="js/data_milestone2.js"></script>
-    <script defer src="js/script.js"></script>
+    <script src="js/data_milestone1.js"></script>
+    <script defer src="js/vuejs.js"></script>
 </head>
 <body>
+    <div id="root">
     <div id="bg-wall" class="container-fluid">
         <div class="main-part">
             <div class="main-part-list">
@@ -44,110 +45,26 @@
                 <div class="list-notify"></div>
                 <div class="list-search">
                     <div class="input-group flex-nowrap px-2  bg-light">
-                        <span role="button" class="my-1 input-group-text" id="addon-wrapping">
+                        <span role="button" class="my-1 input-group-text">
                             <i class="bi bi-search"></i>
                         </span>
                         <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </div>
                 <div class="list-chat">
-                        <div class="d-flex align-items-center chat-selected">
+                        <div v-for="(date, i) in data.contacts" class="d-flex align-items-center chat-selected">
                             <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
+                                <img class="img-fluid" :src="'img/avatar'+date.avatar+'.jpg'" :alt="date.name ">
                             </figure>
                             <div class="list-chat-text">
-                            <h4 class="fs-5 mb-0">Sofia</h4>
+                            <h4 class="fs-5 mb-0">{{date.name}}</h4>
                             <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
                             </div>
                             <div class="list-chat-time">
                                 <h6>12:00</h6>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center chat-selected">
-                            <figure>
-                                <img class="img-fluid" src="img/avatar_1.jpg" alt="">
-                            </figure>
-                            <div class="list-chat-text">
-                                <h4 class="fs-5 mb-0">Sofia</h4>
-                                <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
-                            </div>
-                            <div class="list-chat-time">
-                                <h6>12:00</h6>
-                            </div>
-                        </div>
-
+                       
                 </div>
 
             </div>
@@ -201,7 +118,7 @@
         
 
     </div>
-
+</div>
 </body>
 </html>
 

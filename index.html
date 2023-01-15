@@ -28,21 +28,25 @@
 <body>
     <div id="root">
     <div id="bg-wall" class="container-fluid">
-        <div class="main-part">
+        <div class="main-part shadow">
+
+            <!-- ************SIDEBAR************ -->
             <div class="main-part-list">
+                <!-- USER-HEADER -->
                 <div class="list-header d-flex justify-content-between align-items-center ">
                     <div class="d-flex align-items-center">
-                        <img class="img-fluid" src="img/avatar_io.jpg" alt="">
-                        <h4 class="fs-5 mb-0">Sofia</h4>
+                        <img class="img-fluid" :src="`img/avatar${user.avatar}.jpg`" :alt="user.name">
+                        <h4 class="fs-5 mb-0">{{user.name}}</h4>
                     </div>
                     <div class="list-icons mx-2">
                         <i class="bi bi-arrow-clockwise"></i>
                         <i class="bi bi-chat-square-fill mx-2"></i>
                         <i class="bi bi-three-dots-vertical"></i>
                     </div>
-                    
                 </div>
+                <!-- DISABLE NOTIFY -->
                 <div class="list-notify"></div>
+                <!-- INPUT LIST -->
                 <div class="list-search">
                     <div class="input-group flex-nowrap px-2  bg-light">
                         <span role="button" class="my-1 input-group-text">
@@ -51,14 +55,15 @@
                         <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </div>
+                <!-- CHAT LIST -->
                 <div class="list-chat">
-                        <div v-for="(date, i) in data.contacts" class="d-flex align-items-center chat-selected">
+                        <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)">
                             <figure>
-                                <img class="img-fluid" :src="'img/avatar'+date.avatar+'.jpg'" :alt="date.name ">
+                                <img class="img-fluid" :src="'img/avatar'+contact.avatar+'.jpg'" :alt="contact.name ">
                             </figure>
                             <div class="list-chat-text">
-                            <h4 class="fs-5 mb-0">{{date.name}}</h4>
-                            <h5 class="fs-6 mb-0">Ultimo Messaggio inviato</h4>
+                            <h4 class="fs-5 mb-0">{{contact.name}}</h4>
+                            <h5 class="fs-6 mb-0">Ultimo messaggio inviato</h4>
                             </div>
                             <div class="list-chat-time">
                                 <h6>12:00</h6>
@@ -68,38 +73,38 @@
                 </div>
 
             </div>
+            <!-- ************PART-CHAT************ -->
+
             <div class="main-part-chat">
                 <div class="list-header d-flex justify-content-between align-items-center ">
                     <div class="d-flex align-items-center">
-                        <img class="img-fluid" src="img/avatar_io.jpg" alt="">
+                        <img class="img-fluid" :src="buildAvatarUrl(currentContact.avatar)" alt="">
                         <div class="list-chat-text">
-                            <h4 class="fs-5 mb-0">Sofia</h4>
-                            <h5 class="fs-6 mb-0">Ultimo Messaggio alle ore 12:00</h4>
+                            <h4 class="fs-5 mb-0">{{contacts[currentIndex].name}}</h4>
+                            <h5 class="fs-6 mb-0">Ultimo accesso oggi alle <span>12:00</span></h4>
                         </div>
                     </div>
                     <div class="list-icons mx-2">
                         <i class="bi bi-search"></i>
-                        <i class="bi bi-chat-square-fill mx-2"></i>
+                        <i class="bi bi-paperclip mx-2"></i>
                         <i class="bi bi-three-dots-vertical"></i>
                     </div>
                 </div>
+                <!-- CONVERSATION -->
                 <div class="main-area-chat">
-                    <div class="baloon-personal">
-                        <div class="message-personal">
-                        <p class="mt-2 mx-2">Hai portato a spasso il cane?</p>
+                    <!-- SENT -->
+                    <div  v-for="(message,i) in contacts[currentIndex].messages" class="baloon-personal">
+                        <div v-if="message.status === 'sent'" class="message-personal sent">
+                        <p  class="mt-2 mx-2">{{message.text}}</p> 
                         <h6>12:00</h6>
                         </div>
                     </div>
-                    <div class="baloon-personal">
-                        <div class="message-personal">
-                            <p class="mt-2 mx-2">Ricordati di stendere i panni</p>
-                            <h6>12:00</h6>
-                        </div>
-                    </div>
-                
-                        <div class="baloon-cpu">
-                            <div class="message-cpu">
-                                <p class="mt-2 mx-2">Tutto fatto!</p>
+                    
+                   
+                     <!-- RECEIVED -->
+                        <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received">
+                            <div v-if="message.status === 'received'" class="message-cpu">
+                                <p  class="mt-2 mx-2">{{message.text}}</p>
                                 <h6>13:30</h6>
                             </div>
                         </div>
@@ -108,7 +113,7 @@
                 <div class="footer">
                     <div class="input-group align-items-center">
                         <span><i class="bi bi-emoji-smile"></i></span>
-                        <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="newMessage">
                         <span><i class="bi bi-mic-fill"></i></span>
                     </div>
                 </div>
@@ -122,7 +127,7 @@
 </body>
 </html>
 
-
+<!-- :class="{'sent': message.status === sent}" -->
 
 
 

@@ -102,15 +102,7 @@ const app = Vue.createApp({
         currentChat() {
             return this.currentContact.messages;
         },
-        goToMessage(addMessage) {
-            this.newMessage = [{
-                message: [{
-                    date: '',
-                    text: '',
-                    status: 'received'
-                }]
-            }]
-        }
+
     },
 
     methods: {
@@ -120,10 +112,8 @@ const app = Vue.createApp({
         setCurrentIndex(index) {
             return this.currentIndex = index;
         },
-        textChat(message) {
-            if (this.message = 'sent') {
-                return this.message.text = this.status;
-            }
+        getCurrentMoment() {
+            return dtime.now().setLocale('it').toLocalString(dtime.DATETIME_SHORT_WITH_SECONDS);
         },
 
         sendMessage() {

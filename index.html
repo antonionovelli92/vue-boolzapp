@@ -92,22 +92,33 @@
                 </div>
                 <!-- CONVERSATION -->
                 <div class="main-area-chat">
-                    <!-- SENT -->
+                    <!-- SENT
                     <div  v-for="(message,i) in contacts[currentIndex].messages" class="baloon-personal">
-                        <div v-if="message.status === 'sent'" class="message-personal sent">
+                        <div :class="message.status === 'sent'" class="message-personal sent">
                         <p  class="mt-2 mx-2">{{message.text}}</p> 
                         <h6>12:00</h6>
                         </div>
+                    </div> -->
+
+                    <div class=" overflow-auto">
+                        <ul class="px-3">
+                            <li v-for="(message,i) in contacts[currentIndex].messages" :class="['talk p-3', message.status ]">
+                                <div class="shadow message p-2 rounded-3">
+                                    <p>{{message.text}}</p>
+                                    <time datetime=""> {{message.date}}</time>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     
                    
                      <!-- RECEIVED -->
-                        <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received" v-model="newMessage">
+                        <!-- <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received" v-model="newMessage">
                             <div v-if="message.status === 'received'" class="message-cpu">
                                 <p  class="mt-2 mx-2">{{message.text}}</p>
                                 <h6>13:30</h6>
                             </div>
-                        </div>
+                        </div> -->
                     
                 </div>
                 <div class="footer">

@@ -138,9 +138,8 @@ const app = Vue.createApp({
             }, 1000)
         },
         filtredChat() {
-
-            this.data.contacts.forEach(contact => {
-                this.data.contacts.forEach(contact => {
+            this.contacts.forEach(contact => {
+                this.contacts.forEach(contact => {
                     contact.visible = contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
                 })
             });

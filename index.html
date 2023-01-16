@@ -67,7 +67,7 @@
                 </div>
                 <!-- CHAT LIST -->
                 <div class="list-chat">
-                        <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)" v-if="contact.visible">
+                        <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)" >
                             
                             <figure>
                                 <img class="img-fluid" :src="'img/avatar'+contact.avatar+'.jpg'" :alt="contact.name ">
@@ -171,3 +171,6 @@
         <div class="col-8 h-100">.col-6 .col-sm-3</div>
     </div>
 </div> -->
+
+<!-- <div v-for="(contact, i) in contacts"
+    :class="{'d-flex' 'align-items-center' 'chat-selected', 'd-none':contact.visible === 'true'}" -->

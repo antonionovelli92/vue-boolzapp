@@ -62,7 +62,7 @@
                         <span role="button" class="my-1 input-group-text">
                             <i class="bi bi-search"></i>
                         </span>
-                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat"  @keyup.enter="filtredChat">
+                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat" v-model="searchChat" @keyup.enter="filtredChat">
                     </div>
                 </div>
                 <!-- CHAT LIST -->

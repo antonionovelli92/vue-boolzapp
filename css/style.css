@@ -82,6 +82,20 @@
 .list-notify {
     height: 90px;
     background-color: var(--allert-notify);
+    color: black;
+}
+
+.list-notify h4 {
+    font-size: 15px;
+}
+
+.list-notify .bi {
+    font-size: 28px;
+    color: var(--allert-notify);
+    background-color: white;
+    border-radius: 50%;
+    padding: 3px 10px;
+    margin: 1px 8px;
 }
 
 .list-chat {
@@ -141,6 +155,7 @@
 /* LISTA CHAT */
 .talk {
     display: flex;
+    cursor: pointer;
 }
 
 .talk.sent {
@@ -157,4 +172,11 @@
 
 .talk.received .message {
     background-color: var(--baloon-other);
+}
+
+.talk time {
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
+    color: #DBDBD3;
 }

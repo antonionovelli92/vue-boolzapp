@@ -101,6 +101,15 @@ const app = Vue.createApp({
         },
         currentChat() {
             return this.currentContact.messages;
+        },
+        goToMessage(addMessage) {
+            this.newMessage = [{
+                message: [{
+                    date: '',
+                    text: '',
+                    status: 'received'
+                }]
+            }]
         }
     },
 
@@ -115,6 +124,27 @@ const app = Vue.createApp({
             if (this.message = 'sent') {
                 return this.message.text = this.status;
             }
+        },
+
+        sendMessage() {
+            if (!this.newMessage) return;
+            const newMessage = {
+                status: 'sent',
+                date: '12:00',
+                text: this.newMessage
+            };
+            this.contacts[this.currentIndex].messages.push(newMessage);
+            this.newMessage = '';
+
+            setTimeout(() => {
+                const newMessage = {
+                    status: 'received',
+                    date: '13:00',
+                    text: 'Ok.'
+                };
+                this.contacts[this.currentIndex].messages.push(newMessage);
+
+            }, 1000)
         }
     }
 });

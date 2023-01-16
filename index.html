@@ -102,7 +102,7 @@
                     
                    
                      <!-- RECEIVED -->
-                        <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received">
+                        <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received" v-model="newMessage">
                             <div v-if="message.status === 'received'" class="message-cpu">
                                 <p  class="mt-2 mx-2">{{message.text}}</p>
                                 <h6>13:30</h6>
@@ -111,9 +111,10 @@
                     
                 </div>
                 <div class="footer">
+                    <!-- INPUT -->
                     <div class="input-group align-items-center">
                         <span><i class="bi bi-emoji-smile"></i></span>
-                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="newMessage">
+                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
                         <span><i class="bi bi-mic-fill"></i></span>
                     </div>
                 </div>

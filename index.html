@@ -62,13 +62,13 @@
                         <span role="button" class="my-1 input-group-text" @click="filtredChat">
                             <i class="bi bi-search"></i>
                         </span>
-                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat" v-model="contacts.name" @mouseenter="filtredChat" @keyup.enter="filtredChat">
+                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat" v-model="searchChat" @mouseenter="filtredChat" @keyup.enter="filtredChat">
                     </div>
                 </div>
                 <!-- CHAT LIST -->
                 <div class="list-chat">
                         <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)" >
-                            
+                            <div v-if="contact.visible"> </div>
                             <figure>
                                 <img class="img-fluid" :src="'img/avatar'+contact.avatar+'.jpg'" :alt="contact.name ">
                             </figure>

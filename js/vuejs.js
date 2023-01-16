@@ -138,10 +138,10 @@ const app = Vue.createApp({
             }, 1000)
         },
         filtredChat() {
-            this.contacts = this.contacts.map(contact => {
-                contact.visible = contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
-                return contact
-            })
+            const searchWord = this.searchChat.toLowerCase();
+            return this.contacts = this.contacts.filter(contact => contact.visible = contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
+
+            )
         }
     }
 });
@@ -168,3 +168,8 @@ app.mount('#root');
 //     });
 // }
 //     }
+
+// //  this.contacts = this.contacts.map(contact => {
+// this.contact.visible = this.contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
+// return contact
+//             })

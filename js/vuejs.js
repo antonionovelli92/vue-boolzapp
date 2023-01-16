@@ -4,8 +4,8 @@ const app = Vue.createApp({
     name: 'Boolzapp',
     data() {
         return {
-            chat: 'sent',
             newMessage: '',
+            searchChat: '',
             currentIndex: 0,
             user: {
                 name: 'Antonella',
@@ -103,6 +103,7 @@ const app = Vue.createApp({
             return this.currentContact.messages;
         },
 
+
     },
 
     methods: {
@@ -135,6 +136,14 @@ const app = Vue.createApp({
                 this.contacts[this.currentIndex].messages.push(newMessage);
 
             }, 1000)
+        },
+        filtredChat() {
+
+            this.data.contacts.forEach(contact => {
+                this.data.contacts.forEach(contact => {
+                    contact.visible = contact.name.toLowerCase().includes(this.searchChat.toLowerCase())
+                })
+            });
         }
     }
 });

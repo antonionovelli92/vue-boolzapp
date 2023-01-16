@@ -52,12 +52,13 @@
                         <span role="button" class="my-1 input-group-text">
                             <i class="bi bi-search"></i>
                         </span>
-                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" class="my-1 rounded-1 form-control" placeholder="Cerca o inizia una nuova chat"  @keyup.enter="filtredChat">
                     </div>
                 </div>
                 <!-- CHAT LIST -->
                 <div class="list-chat">
-                        <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)">
+                        <div v-for="(contact, i) in contacts" class="d-flex align-items-center chat-selected" @click="setCurrentIndex(i)" >
+                            
                             <figure>
                                 <img class="img-fluid" :src="'img/avatar'+contact.avatar+'.jpg'" :alt="contact.name ">
                             </figure>
@@ -92,14 +93,6 @@
                 </div>
                 <!-- CONVERSATION -->
                 <div class="main-area-chat">
-                    <!-- SENT
-                    <div  v-for="(message,i) in contacts[currentIndex].messages" class="baloon-personal">
-                        <div :class="message.status === 'sent'" class="message-personal sent">
-                        <p  class="mt-2 mx-2">{{message.text}}</p> 
-                        <h6>12:00</h6>
-                        </div>
-                    </div> -->
-
                     <div class=" overflow-auto">
                         <ul class="px-3">
                             <li v-for="(message,i) in contacts[currentIndex].messages" :class="['talk p-3', message.status ]">
@@ -110,17 +103,9 @@
                             </li>
                         </ul>
                     </div>
-                    
-                   
-                     <!-- RECEIVED -->
-                        <!-- <div v-for="(message,i) in contacts[currentIndex].messages" class="baloon-cpu received" v-model="newMessage">
-                            <div v-if="message.status === 'received'" class="message-cpu">
-                                <p  class="mt-2 mx-2">{{message.text}}</p>
-                                <h6>13:30</h6>
-                            </div>
-                        </div> -->
-                    
                 </div>
+
+                <!-- FO0TER -->
                 <div class="footer">
                     <!-- INPUT -->
                     <div class="input-group align-items-center">
